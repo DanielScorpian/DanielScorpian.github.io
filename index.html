@@ -1,0 +1,653 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Daniel's Portfolio</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+    <link rel="icon" href="icon.png" type="image/x-icon">
+    <style>
+        * {
+            scroll-behavior: smooth;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            margin: 0;
+        }
+        /* header style setup */
+        .header {
+            padding: 10%;
+            -webkit-background-size: cover;
+            -moz-background-size: cover;
+            -o-background-size: cover;
+            background-size: cover;
+        }
+
+        .header h1 {
+            font-size: 40px;
+        }
+        /* intro style setup */
+        .intro {
+            position: relative;
+            background-color: rgb(0, 0, 0);
+            background-color: rgba(0, 0, 0, 0.4);
+            color: white;
+            font-weight: bold;
+            border: 3px solid #f1f1f1;
+            top: 10%;
+            z-index: 2;
+            width: 100%;
+            padding: 20px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        /* button style setup */
+        .btn {
+            position: relative;
+            color: rgb(255, 255, 255);
+            background-color: rgba(26, 32, 112, 0.616);
+            padding: 15px 32px;
+            border-radius: 50px;
+            display: inline-block;
+            font-size: 16px;
+            margin: 4px 2px;
+            cursor: pointer;
+            text-align: center;
+            text-decoration: none;
+        }
+        /* header style setup when hovering over */
+        .btn:hover {
+            background-color: rgb(0, 15, 83);
+        }
+        /* regular navigation bar style setup */
+        .navbar {
+            overflow: hidden;
+            background-color: rgb(8, 47, 83);
+            position: sticky;
+            top: 0;
+            z-index: 1;
+            word-wrap: break-word;
+        }
+        /* regular navigation bar alignment style */
+        .navbar a {
+            float: left;
+            display: block;
+            color: white;
+            background-color: rgb(8, 47, 83);
+            text-align: center;
+            padding: 14px 16px;
+            width: 16.667%;
+            font-size: 17px;
+            text-decoration: none;
+        }
+
+        .navbar a.right {
+            float: right;
+        }
+        /* regular navigation bar style when hovering */
+        .navbar a:hover {
+            background-color: rgba(43, 142, 255, 0.781);
+            color: rgb(255, 255, 0);
+        }
+        /* regular navigation bar home highlight setup */
+        .navbar a.active {
+            background-color: rgb(123, 164, 212);
+            color: white;
+        }
+        /* mobile navigation bar style setup */
+        .navbar-mobile {
+            overflow: hidden;
+            background-color: rgb(8, 47, 83);
+            position: sticky;
+            top: 0;
+            word-wrap: break-word;
+        }
+        /* mobile navigation bar alignment style */
+        .navbar-mobile a {
+            float: left;
+            display: inline-table;
+            color: white;
+            background-color: rgb(8, 47, 83);
+            text-align: center;
+            padding: 10px 10px;
+            text-decoration: none;
+        }
+
+        .navbar-mobile a.right {
+            float: right;
+        }
+        /* mobile navigation bar style when hovering */
+        .navbar-mobile a:hover {
+            background-color: rgba(43, 142, 255, 0.781);
+            color: rgb(255, 255, 0);
+        }
+        /* mobile navigation bar home highlight setup */
+        .navbar-mobile a.active {
+            background-color: rgb(123, 164, 212);
+            color: white;
+        }
+        /* mobile navigation bar right-most hamburger bar setup */
+        .navbar-mobile a.bars {
+            text-align: center;
+            float: right;
+            display: block;
+            padding: 10px 10px 10px 10px;
+            max-height: 50px;
+        }
+        /* Hide mobile at first if not in mobile mode */
+        .navbar-mobile {
+            display: none;
+        }
+        /* style of bar tabs in regular mode */
+        .navbar #tabs {
+            display: block;
+        }
+        /* Responsive layout: when the screen is less than 400px wide, change display of components */
+        @media screen and (max-width: 400px) {
+            /* hide regular bar elements */
+            .navbar a {
+                float: none;
+                width: 100%;
+            }
+            /* hide regular bar */
+            .navbar {
+                display: none;
+            }
+            /* change to show mobile bar */
+            .navbar-mobile {
+                display: block;
+            }
+            /* mobile tabs setup */
+            .navbar-mobile #mobile-tabs {
+                display: none;
+            }
+        }
+
+        /* Site Body */
+
+        /* underline style of sections */
+        .underline {
+            margin: 0 auto;
+            width: 5%;
+            border-top: 3px solid #005fb8;
+            padding-bottom: 2%;
+        }
+        /* container with shadow style setup */
+        .shadow-container {
+            text-align: left;
+            margin-left: auto;
+            margin-right: auto;
+            padding: 50px 50px;
+            max-width: 900px;
+            border-radius: 50px;
+            background-color: white;
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+        }
+        /* about section style setup */
+        #about {
+            padding: 4% 15px;
+            border-bottom: 1px solid #000000;
+            background-color: rgb(240, 240, 240);
+            text-align: center
+        }
+        /* skill section block style setup */
+        .skill-blocks {
+            text-align: center
+        }
+
+        .skill-blocks ul {
+            display: block;
+            margin: 0 auto;
+            padding: 0;
+            max-width: 800px
+        }
+
+        .skill-blocks li {
+            display: inline-block;
+            margin: 7px;
+            padding: 5px 10px;
+            color: #0a2153;
+            background: #008cff1c;
+            list-style: none;
+            cursor: default;
+            font-size: 1.2em
+        }
+        /* education section style setup */
+        #education {
+            padding: 4% 15px;
+            border-bottom: 1px solid #000000;
+            background-color: rgba(0, 162, 255, 0.377);
+            text-align: center
+        }
+        /* experiences section style setup */
+        #experiences {
+            padding: 4% 15px;
+            border-bottom: 1px solid #000000;
+            background-color: rgb(240, 240, 240);
+            text-align: center
+        }
+        /* make dates to the right for experience sections */
+        .dates-right {
+            position: relative;
+            float: right;
+        }
+        /* experience section job style position setup */
+        .job {
+            position: relative;
+            float: right;
+        }
+        /* experience bullet point styles */
+        #experiences ul {
+            margin: 0 auto;
+            padding: 0;
+        }
+
+        #experiences li {
+            margin: 7px;
+        }
+        /* time to the left for general time and date sections */
+        .time {
+            text-align: left
+        }
+        /* projects section style setup */
+        #projects {
+            padding: 4% 15px;
+            border-bottom: 1px solid #000000;
+            background-color: rgba(0, 162, 255, 0.377);
+            text-align: center
+        }
+        /* project bullet point styles */
+        #projects ul {
+            margin: 0 auto;
+            padding: 0;
+        }
+
+        #projects li {
+            margin: 7px;
+        }
+
+        /* interests section style setup */
+        #interests {
+            padding: 4% 15px;
+            border-bottom: 1px solid #000000;
+            background-color: rgb(240, 240, 240);
+            text-align: center
+        }
+        /* resume section style setup */
+        #resume {
+            border-bottom: 1px solid #000000;
+            background-color: rgba(0, 162, 255, 0.377);
+            text-align: center
+        }
+        /* email style setup */
+        .email {
+            position: relative;
+            float: left;
+        }
+
+        /* icon style setup */
+        .fab {
+            position: relative;
+            float: right;
+            padding: 5px;
+            font-size: 20px;
+            text-decoration: none;
+            border-radius: 50%;
+        }
+
+        .fa:hover {
+            opacity: 0.7;
+        }
+
+        /* github icon style setup */
+        .fa-github {
+            background: #3B5998;
+            color: white;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="header" style="background-image: url('Background1.jpg');">
+        <div class="intro">
+            <h1>Daniel Haoxuan Zhang's Portfolio</h1>
+            <p>A <b>responsive</b> website created by me.</p>
+            <a href="Daniel_Haoxuan_Zhang_Resume.pdf">
+                <button class="btn">Download Resume</button>
+            </a>
+        </div>
+    </div>
+
+    <div class="navbar">
+        <a href="#" class="active">Home</a>
+        <div id="tabs">
+            <a href="#about">About Me</a>
+            <a href="#education">Education</a>
+            <a href="#experiences">Experiences</a>
+            <a href="#projects">Projects</a>
+            <a href="#interests">Interests</a>
+        </div>
+    </div>
+
+    <div class="navbar-mobile">
+        <a href="#" class="active">Home</a>
+        <div id="mobile-tabs">
+            <a href="#about">About Me</a>
+            <a href="#education">Education</a>
+            <a href="#experiences">Experiences</a>
+            <a href="#projects">Projects</a>
+            <a href="#interests">Interests</a>
+        </div>
+        <a href="javascript:void(0);" class="bars" onclick="menuScript()">
+            <i class="fa fa-bars" style="font-size: 100%"></i>
+        </a>
+    </div>
+
+    <div id="about">
+        <h2 class="heading" style="line-height:0%">ABOUT ME</h2>
+        <div class="underline"></div>
+        <div class="shadow-container">
+            <div class="about-info">
+                <p>3rd-year <b>University of Waterloo</b> student studying <b>Computer Science</b> with <b>Software Engineering</b> &
+                    <b>Business Specialization Honours Co-operative Undergraduate Program</b>, estimated graduation in <b>Spring 2022</b></p>
+                <h3>Qualifications</h3>
+                <ul>
+                    <li>Enthusiastic, inquisitive, adaptive, responsible and organized worker with strong leadership &
+                        team skills</li>
+                    <li>Communicative critical and logical thinker seeking growth through collaboration and development
+                    </li>
+                    <li>7+ years of wide-range programming and project experience by extensive training &
+                        extracurricular projects</li>
+                </ul>
+                <h3>Skills</h3>
+                <div class="skill-blocks">
+                    <ul>
+                        <li>Python</li>
+                        <li>C</li>
+                        <li>C++</li>
+                        <li>Java</li>
+                        <li>Racket</li>
+                        <li>Scheme</li>
+                        <li>HTML</li>
+                        <li>CSS</li>
+                        <li>JavaScript</li>
+                        <li>Bash</li>
+                        <li>Linux</li>
+                        <li>AODA</li>
+                        <li>Android Studio</li>
+                        <li>MS Office</li>
+                        <li>Turing</li>
+                        <li>Git</li>
+                        <li>SQL</li>
+                        <li>Circuits</li>
+                        <li>Arduino</li>
+                        <li>NodeJS</li>
+                        <li>Angular</li>
+                        <li>SharePoint</li>
+                        <li>Azure</li>
+                    </ul>
+                </div>
+                <h3>Contact Info</h3>
+                <a href="mailto: hx5zhang@uwaterloo.ca" class="email">hx5zhang@uwaterloo.ca</a>
+                <a href="https://github.com/DanielScorpian/Portfolio" class="fab fa-github"></a>
+            </div>
+        </div>
+    </div>
+
+    <div id="education">
+        <h2 class="heading" style="line-height:0%">EDUCATION</h2>
+        <div class="underline"></div>
+        <div class="time">
+            <h2 class="fas fa-map-marker-alt"> September 2017 - Present</h2>
+        </div>
+        <div class="shadow-container">
+            <div class="project-info">
+                <h3><u>Bachelor of Computer Science (BCS)</u> - University of Waterloo, Waterloo, ON</h3>
+                <p>• <b><i>Computer Science</i></b> with <b><i>Software Engineering</i></b> & <b><i>Business</i>
+                        Specialization Honours Co-operative Program</b></p>
+                <h4><u>Relevent Awards</u></h4>
+                <p><b>University of Waterloo President's Scholarship of Distinction</b> <a class="dates-right">2017</a>
+                </p>
+                <p>for entrance average of <b><i>97%</i></b></p>
+            </div>
+        </div>
+        <br></br>
+        <div class="time">
+            <h2 class="fas fa-map-marker-alt"> September 2013 - June 2017</h2>
+        </div>
+        <div class="shadow-container">
+            <div class="project-info">
+                <h3><u>Ontario Secondary School Diploma</u> - Albert Campbell Collegiate Institute, Toronto, ON</h3>
+                <h4><u>Relevent Awards</u></h4>
+                <p style="padding-top: 0%; padding-bottom: 0%"><b>Medal of the Governor General of Canada</b> <a
+                        class="dates-right">2017</a></p>
+                <p style="padding-top: 0%; padding-bottom: 1%">for Highest Academic Average of <b><i>97%</i></b> and
+                    Achievements in Grades 11 & 12</p>
+                <p style="padding-top: 0%; padding-bottom: 0%"><b>Wind Ensemble Award Medal</b> <a
+                        class="dates-right">2017</a></p>
+                <p style="padding-top: 0%; padding-bottom: 1%">for overall outstanding flute performance in the Wind
+                    Ensemble</p>
+                <p style="padding-top: 0%; padding-bottom: 0%">Yearly given <b>Ontario Scholar & Honour Roll
+                        Certificates</b> <a class="dates-right">2013 - 2017</a></p>
+                <p style="padding-top: 0%; padding-bottom: 1%">for consistent oustanding academic averages and
+                    performances every year</p>
+                <p style="padding-top: 0%; padding-bottom: 0%">Various <b>Albert Campbell Collegiate Institute Award
+                        Certificates for Adacemic Distinctions</b> <a class="dates-right">2013 - 2017</a></p>
+                <p>for achieving full marks and/or highest academic achievements in multiple courses (i.e. Spanish, CS,
+                    Math, Technologies, Music)</p>
+            </div>
+        </div>
+    </div>
+
+    <div id="experiences">
+        <h2 class="heading" style="line-height:0%">EXPERIENCES</h2>
+        <div class="underline"></div>
+        <div class="time">
+            <h2 class="fas fa-map-marker-alt"> September 2019 – April 2020</h2>
+        </div>
+        <div class="shadow-container">
+            <div class="experience-info">
+                <p><b>(CGI) Consultants for Government and Industries</b> - Markham, ON <a class="job"><i>Developer</i></a></p>
+                <ul>
+                    <li>Consistent excellent performance and demonstration of software developmental responsibilities throughout</li>
+                    <li>Developed Java web applications and automated scripts while rigorously ensuring quality programming</li>
+                    <li>Proposed enhancements through constructing and managing technical process documentation and
+                        libraries</li>
+                    <li>Integrated solutions with respect to client requirements through both front-end and
+                        back-end developing</li>
+                </ul>
+            </div>
+        </div>
+        <br></br>
+        <div class="time">
+            <h2 class="fas fa-map-marker-alt"> May 2018 - December 2018</h2>
+        </div>
+        <div class="shadow-container">
+            <div class="experience-info">
+                <p><b>Ontario Ministry of Education</b> - Toronto, ON <a class="job"><i>IT Quality Assurance Assistant</i></a></p>
+                <ul>
+                    <li>Earned "Outstanding" performance evaluation and feedback for Quality Assurance & Software Developing</li>
+                    <li>Operated efficiently in numerous teams with SDLC, Waterfall and Agile knowledge throughout development</li>
+                    <li>Proficiently developed and executed automated and manual test plans to identify and debug software issues</li>
+                    <li>Selenium, .NET, Azure, NodeJS, Angular, UFT, ALM, AODA, SharePoint, Cognos, TFS, SQL, C, HTML, etc.</li>
+                </ul>
+            </div>
+        </div>
+        <br></br>
+        <div class="time">
+            <h2 class="fas fa-map-marker-alt"> July 2017 - September 2017</h2>
+        </div>
+        <div class="shadow-container">
+            <div class="experience-info">
+                <p><b>The Postcard Factory</b> - Markham, ON <a class="job"><i>General Warehouse Management and Control</i></a></p>
+                <ul>
+                    <li>Maintained team environment by team agreements to assure work efficiency throughout</li>
+                    <li>Exposure to Quality Assurance tasks & responsibilities as well as databases and management
+                        systems</li>
+                    <li>Achieved beyond goals by efficient time managing; great impressions to employers</li>
+                    <li>Adapted different tasks by learning beforehand; efficiently reduced time needed to learn</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div id="projects">
+        <h2 class="heading" style="line-height:0%">PROJECTS</h2>
+        <div class="underline"></div>
+        <div class="time">
+            <h2 class="fas fa-map-marker-alt"> September 2020</h2>
+        </div>
+        <div class="shadow-container">
+            <div class="project-info">
+                <h3>HTML/CSS Portfolio Website</h3>
+                <ul>
+                    <li>Website project built in one day that utilized HTML and CSS to display personal portfolio details & information</li>
+                </ul>
+            </div>
+        </div>
+        <div class="time">
+            <h2 class="fas fa-map-marker-alt"> February 2020</h2>
+        </div>
+        <div class="shadow-container">
+            <div class="project-info">
+                <h3>Photo to Text Automated Typer</h3>
+                <ul>
+                    <li>Automated program that is written in Python that retrieves characters and words within a photograph or screenshot, then automatically types out the accurate translation at ~1200 words per minute</li>
+                    <li>Resolved issues that disallowed copy-pasting by automating scripts to retrieve text easy and time efficient</li>
+                </ul>
+            </div>
+        </div>
+        <div class="time">
+            <h2 class="fas fa-map-marker-alt"> April 2019</h2>
+        </div>
+        <div class="shadow-container">
+            <div class="project-info">
+                <h3>Rubik's Cube Solver</h3>
+                <ul>
+                    <li>Utilized a Java program to retrieve cube state to compute the most efficient solution using God’s Algorithm for 3x3x3 Rubik’s Cubes, which is then translated into a C program that commands an Arduino circuit with 6 motors to solve a Rubik's Cube</li>
+                </ul>
+            </div>
+        </div>
+        <div class="time">
+            <h2 class="fas fa-map-marker-alt"> Janurary 2019</h2>
+        </div>
+        <div class="shadow-container">
+            <div class="project-info">
+                <h3>Mobile Emergency Evacuation Management Application (E.E.M.A)</h3>
+                <ul>
+                    <li>Designed to send out status updates to supervisors while providing floor plans and route maps</li>
+                    <li>Provides updates for listed contacts to replace old fashion name-calling in facility evacuation cases</li>
+                    <li>Developed using tools including Android Studio, Google Maps as well as cellular permissions</li>
+                </ul>
+            </div>
+        </div>
+        <div class="time">
+            <h2 class="fas fa-map-marker-alt"> May 2018 - January 2019</h2>
+        </div>
+        <div class="shadow-container">
+            <div class="project-info">
+                <h3>Automated Task Manager</h3>
+                <ul>
+                    <li>Task manager that executes specific compilations of pre-designed tasks and user commands</li>
+                    <li>Developed using Selenium, C, SQL, Bash and Python</li>
+                    <li>Abilities include filling out forms, executing programs, action recording, action replay, etc.</li>
+                </ul>
+            </div>
+        </div>
+        <div class="time">
+            <h2 class="fas fa-map-marker-alt"> August 2017</h2>
+        </div>
+        <div class="shadow-container">
+            <div class="project-info">
+                <h3>Utility Application Suite</h3>
+                <ul>
+                    <li>Constructed a suite of daily utility applications using Java to provide unique and personalized designs</li>
+                    <li>Apps included calendar, schedule-keeper, notebook, finance-book, task-book, music player and photo album</li>
+                </ul>
+            </div>
+        </div>
+        <div class="time">
+            <h2 class="fas fa-map-marker-alt"> July 2017</h2>
+        </div>
+        <div class="shadow-container">
+            <div class="project-info">
+                <h3>Sheet Music to MIDI Convertor</h3>
+                <ul>
+                    <li>Programmable application that converts sheet music for musical instruments into digital MIDI formats</li>
+                    <li>Allowed easy modifications and transpositions of digital tile representing music into sound or staff notations</li>
+                </ul>
+            </div>
+        </div>
+        <div class="time">
+            <h2 class="fas fa-map-marker-alt"> May 2017</h2>
+        </div>
+        <div class="shadow-container">
+            <div class="project-info">
+                <h3>Line Following Robot</h3>
+                <ul>
+                    <li>Self-designed autonomous robot utilizing custom exterior, electrical hardware components and circuitries</li>
+                    <li>Built electrical components with ATMEGA8 microcontroller chip, motors and sensors to follow black lines</li>
+                    <li>Developed C algorithms to enable the mobile robot to recognize paths, calculate movements and follow lines</li>
+                </ul>
+            </div>
+        </div>
+        <div class="time">
+            <h2 class="fas fa-map-marker-alt"> November 2016 - January 2018</h2>
+        </div>
+        <div class="shadow-container">
+            <div class="project-info">
+                <h3>Game Platform</h3>
+                <ul>
+                    <li>Enriched and practiced programming techniques through developing fun and unique applications</li>
+                    <li>Designed and implemented machine learning AI logics, algorithms & graphics in various languages</li>
+                    <li>Included Sudoku Solver, AI TicTacToe, Chess, dice games, Blackjack, Tetris, Snake, and various board games</li>
+                </ul>
+            </div>
+        </div>
+        <br></br>
+        <div class="shadow-container">
+            <div class="project-info">
+                <h3><u>OTHER ACTIVITIES & PROJECTS</u></h3>
+                <p>
+                    StarterHacks 2019, desktop and mobile utility applications, mini-games, CS tutoring, etc.
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <div id="interests">
+        <h2 class="heading" style="line-height:0%">INTERESTS</h2>
+        <div class="underline"></div>
+        <div class="shadow-container">
+            <div class="interest-info">
+                <p>
+                    Developing fun applications and utilities, my cats, Rubik’s Cubes, Yo-Yo, puzzles, piano, flute,
+                    magic tricks, etc.
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <div id="resume">
+        <a href="Daniel_Haoxuan_Zhang_Resume.pdf">
+            <button class="btn">Download Resume</button>
+        </a>
+    </div>
+
+    <script>
+        function menuScript() {
+            var x = document.getElementById("mobile-tabs");
+            if (x.style.display === "block") {
+                x.style.display = "none";
+            } else {
+                x.style.display = "block";
+            }
+        }
+    </script>
+</body>
+
+</html>
