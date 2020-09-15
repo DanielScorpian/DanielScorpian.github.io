@@ -1,4 +1,2 @@
 # DanielScorpian.github.io
-Portfolio
-
-Please visit DanielScorpian.github.io to view the HTML/CSS Portfolio website demonstration!
+Please visit [DanielScorpian.github.io](https://DanielScorpian.github.io) to view the HTML/CSS Portfolio website demonstration!
